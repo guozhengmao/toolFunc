@@ -16,5 +16,18 @@ export default class gzm {
     }
 
     //防抖
-    debounce(func, wait) {}
+    debounce(func, wait) {
+        let time;
+
+        return function () {
+            //保存上下文
+            let context = this;
+            let args = arguments;
+
+            clearTimeout(time);
+            time = setTimeout(function () {
+                func.apply(context, args);
+            }, wait);
+        }
+    }
 }
