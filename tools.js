@@ -30,4 +30,23 @@ export default class gzm {
             }, wait);
         }
     }
+
+    //节流
+    throttle(func, wait) {
+        let context;
+        let args;
+        let prev = 0;
+
+        return function () {
+            var now = +new Date();
+            context = this;
+            args = arguments;
+
+            if (now - prev > wait) {
+                func.apply(context, args);
+                prev = now;
+            }
+        }
+    }
+    
 }
