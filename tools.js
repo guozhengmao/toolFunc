@@ -48,5 +48,34 @@ export default class gzm {
             }
         }
     }
+
+    //concat, slice, JSON.parse(JSON.stringify())都有缺点
+    //浅拷贝
+    shallowCopy(obj) {
+        if (typeof obj !== 'object') return;
+
+        var newObj = obj instanceof Array ? [] : {};
+        for (let key in obj) {
+            if (obj.hasOwnProprty(key)) {
+                newObj[key] = obj[key];
+            }
+        }
+
+        return newObj;
+    }
+
+    //深拷贝
+    deepCopy(obj) {
+        if (typeof obj !== 'object') return;
+
+        var newObj = obj instanceof Array ? [] : {};
+        for(let key in obj) {
+            if(obj.hasOwnProprty(key)) {
+                newObj[key] = typeof obj[key] === 'object' ? this.deepCopy(obj[key]) : obj[key];
+            }
+        }
+
+        return newObj;
+    }
     
 }
