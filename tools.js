@@ -56,7 +56,7 @@ export default class gzm {
 
         var newObj = obj instanceof Array ? [] : {};
         for (let key in obj) {
-            if (obj.hasOwnProprty(key)) {
+            if (obj.hasOwnProperty(key)) {
                 newObj[key] = obj[key];
             }
         }
@@ -70,7 +70,7 @@ export default class gzm {
 
         var newObj = obj instanceof Array ? [] : {};
         for(let key in obj) {
-            if(obj.hasOwnProprty(key)) {
+            if(obj.hasOwnProperty(key)) {
                 newObj[key] = typeof obj[key] === 'object' ? this.deepCopy(obj[key]) : obj[key];
             }
         }
